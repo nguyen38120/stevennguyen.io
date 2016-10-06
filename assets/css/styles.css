@@ -192,6 +192,9 @@ a.dotted-link:hover {
 #contactform{
   display:none;
 }
+#contactsubmit{
+  display:none;
+}
 .contact input[type="text"]:focus,
 .contact input[type="date"]:focus,
 .contact input[type="datetime"]:focus,

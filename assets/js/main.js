@@ -4,7 +4,11 @@ jQuery(document).ready(function($) {
     $("#contactbutton").click(function(){
         $("#contactform").slideToggle("slow");
     })
-
+    $('input').change(function(e){
+        if ($('#contactname').val() && validateEmail($('#contactemail').val())) {
+            $('#contactsubmit').toggle();
+        }
+    });
 
     /*======= Skillset *=======*/
     
@@ -24,3 +28,8 @@ jQuery(document).ready(function($) {
 
     });
 });
+
+var validateEmail = function(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
