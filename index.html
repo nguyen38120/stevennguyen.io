@@ -39,7 +39,7 @@
                                 <input type="text" id="contactname" name="field1" placeholder="Your Name" />
                                 <input type="email" id="contactemail" name="field2" placeholder="Email Address" />
                                 <textarea name="field3" id="contactmessage" placeholder="Type your Message"></textarea>
-                                <div id="contactsubmit"><input type="submit" value="Send" /></div>
+                                <div id="contactsubmit"><input type="submit" id="submitbutton" value="Send" /></div>
                             </form>
                         </div>
                 </div>
@@ -224,15 +224,10 @@
             </div><!--//secondary-->    
         </div><!--//row-->
     </div><!--//masonry-->
-   <!--Firebase -->
-   <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-   <!-- Javascript -->          
-    <script type="text/javascript" src="./assets/plugins/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
-    <script type="text/javascript" src="./assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
-    <!-- custom js -->
-    <script type="text/javascript" src="./assets/js/main.js"></script>    
+    <!--Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <script>
+        // Initialize Firebase
         var config = {
             apiKey: "AIzaSyCRDzKBtfT4NfsIN2oH_6doTIjrulusXZA",
             authDomain: "my-site-3fe41.firebaseapp.com",
@@ -241,7 +236,43 @@
             messagingSenderId: "222532148172"
         };
         firebase.initializeApp(config);
+        alert(appRef);
+        function getVisitor(){
+            alert('getVisitor');
+            var dbref = firebase.database().ref('visitors/');
+            dbref.on('value',function(snapshot) {
+            alert(snapshot.val());
+            }, function (errorObject) {
+                alert("read failed: "+errorObject.code);
+            })
+        }
+        function saveVisitor(){
+            alert('calling saveVisitor');
+            var user = document.getElementById('contactname').value;
+            var email = document.getElementById('contactemail').value;
+            var comment = document.getElementById('contactmessage').value;
+            alert(contactname);
+            alert(contactemail);
+            alert(contactmessage);
+            // save the data
+            var mydatabase = firebase.database();
+            var dbref  = mydatabase.ref('visitors/').push({
+                username: contactname,
+                email: contactemail,
+                comment: contactmessage}, function(errorObject) {
+                alert("PushError" + errorObject.code); 
+            });
+            alert(dbref);
+        }
+        document.getElementById("submitbutton").addEventListener("click", getVisitor);
+        document.getElementById("submitbutton").addEventListener("click", saveVisitor);
     </script>
+   <!-- Javascript -->          
+    <script type="text/javascript" src="./assets/plugins/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="./assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="./assets/js/main.js"></script>    
 </body>
 </html> 
 
