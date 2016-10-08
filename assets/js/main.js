@@ -34,7 +34,6 @@ var validateEmail = function(email) {
     return re.test(email);
 };
 
-    /*========= FireBase ========*/
 
 document.getElementById("contactsubmit").addEventListener("click", getVisitor);
 document.getElementById("contactsubmit").addEventListener("click", saveVisitor);
@@ -51,9 +50,9 @@ function getVisitor(){
 
 function saveVisitor(){
     alert('calling saveVisitor');
-    var user = document.getElementById('user').value;
-    var email = document.getElementById('email').value;
-    var comment = document.getElementById('comment').value;
+    var user = document.getElementById('contactname').value;
+    var email = document.getElementById('contactemail').value;
+    var comment = document.getElementById('contactmessage').value;
     alert(user);
     alert(email);
     alert(comment);
