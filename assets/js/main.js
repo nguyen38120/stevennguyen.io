@@ -35,9 +35,10 @@ var validateEmail = function(email) {
 };
 
 
-document.getElementById("contactsubmit").addEventListener("click", getVisitor);
+//document.getElementById("contactsubmit").addEventListener("click", getVisitor);
 document.getElementById("contactsubmit").addEventListener("click", saveVisitor);
 
+/*
 function getVisitor(){
     alert('getVisitor');
     var dbref = firebase.database().ref('visitors/');
@@ -47,6 +48,7 @@ function getVisitor(){
         alert("read failed: "+errorObject.code);
     })
 }
+*/
 
 function saveVisitor(){
     alert('calling saveVisitor');
