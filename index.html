@@ -236,6 +236,39 @@
             messagingSenderId: "222532148172"
         };
         firebase.initializeApp(config);
+        
+        alert(appRef);
+        /*
+        document.getElementById("contactsubmit").addEventListener("click", getVisitor);
+        document.getElementById("contactsubmit").addEventListener("click", saveVisitor);
+        function getVisitor(){
+            alert('getVisitor');
+            var dbref = firebase.database().ref('visitors/');
+            dbref.on('value',function(snapshot) {
+            alert(snapshot.val());
+            }, function (errorObject) {
+                alert("read failed: "+errorObject.code);
+            })
+        }
+        function saveVisitor(){
+            alert('calling saveVisitor');
+            var user = document.getElementById('contactname').value;
+            var email = document.getElementById('contactemail').value;
+            var comment = document.getElementById('contactmessage').value;
+            alert(contactname);
+            alert(contactemail);
+            alert(contactmessage);
+            // save the data
+            var mydatabase = firebase.database();
+            var dbref  = mydatabase.ref('visitors/').push({
+                username: user
+                email: email,
+                comment: comment}, function(errorObject) {
+                alert("PushError" + errorObject.code); 
+            });
+            alert(dbref);
+        }
+        */
     </script>
    <!-- Javascript -->          
     <script type="text/javascript" src="./assets/plugins/jquery-1.11.3.min.js"></script>
